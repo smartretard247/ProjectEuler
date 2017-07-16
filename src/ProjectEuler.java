@@ -30,6 +30,6 @@ public class ProjectEuler {
   }
   
   public static void main(String[] args) {
-    System.out.println(evenFibonacci(4000000));
+    System.out.println("Answer: " + evenFibonacci(4000000));
   }
 }
