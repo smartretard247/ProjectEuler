@@ -1,3 +1,6 @@
+
+import java.math.BigInteger;
+
 /**
  *
  * @author Jeezy
@@ -29,7 +32,28 @@ public class ProjectEuler {
     return sum;
   }
   
+  /**
+   * The prime factors of 13195 are 5, 7, 13 and 29.
+   * What is the largest prime factor of the number 600851475143 ?
+   * @param number
+   * @return the largest prime factor
+   */
+  public static long largestPrimeFactor(BigInteger number) {
+    long largestPrime = 1;
+    BigInteger x = new BigInteger("1");
+    
+    while(x.nextProbablePrime().compareTo(number) < 1) {
+      x = x.nextProbablePrime();
+      if(number.remainder(x).compareTo(BigInteger.ZERO) == 0) {
+        largestPrime = x.longValue();
+        number = number.divide(x);
+      }
+    }
+    
+    return largestPrime;
+  }
+  
   public static void main(String[] args) {
-    System.out.println("Answer: " + evenFibonacci(4000000));
+    System.out.println("Answer: " + largestPrimeFactor(new BigInteger("600851475143")));
   }
 }
